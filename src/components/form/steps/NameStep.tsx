@@ -2,7 +2,7 @@
 import { useFormContext } from "@/contexts/FormContext";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { useState } from "react";
+import { useState, KeyboardEvent } from "react";
 import { Label } from "@/components/ui/label";
 import { ArrowRight } from "lucide-react";
 
@@ -37,6 +37,13 @@ const NameStep = () => {
     }
   };
 
+  const handleKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter") {
+      e.preventDefault();
+      handleNextStep();
+    }
+  };
+
   return (
     <div className="animate-slide-in">
       <div className="form-step-number">1 <span className="form-arrow">→</span></div>
@@ -54,6 +61,7 @@ const NameStep = () => {
               updateFormValues({ firstName: e.target.value });
               if (errors.firstName) setErrors({...errors, firstName: ""});
             }}
+            onKeyDown={handleKeyDown}
             placeholder="Vorname"
             className="form-underlined-input h-12 text-base"
           />
@@ -72,6 +80,7 @@ const NameStep = () => {
               updateFormValues({ lastName: e.target.value });
               if (errors.lastName) setErrors({...errors, lastName: ""});
             }}
+            onKeyDown={handleKeyDown}
             placeholder="Nachname"
             className="form-underlined-input h-12 text-base"
           />

@@ -2,7 +2,7 @@
 import { useFormContext } from "@/contexts/FormContext";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { useState } from "react";
+import { useState, KeyboardEvent } from "react";
 import { Label } from "@/components/ui/label";
 import { ArrowLeft } from "lucide-react";
 
@@ -30,6 +30,13 @@ const EmailStep = () => {
     setCurrentStep(1);
   };
 
+  const handleKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter") {
+      e.preventDefault();
+      handleNextStep();
+    }
+  };
+
   return (
     <div className="animate-slide-in">
       <div className="form-step-number">2 <span className="form-arrow">→</span></div>
@@ -46,6 +53,7 @@ const EmailStep = () => {
               updateFormValues({ email: e.target.value });
               setError("");
             }}
+            onKeyDown={handleKeyDown}
             placeholder="deine@email.de"
             className="form-underlined-input h-12 text-base"
           />

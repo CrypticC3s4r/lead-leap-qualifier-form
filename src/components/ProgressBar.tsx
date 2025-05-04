@@ -16,6 +16,10 @@ const ProgressBar = () => {
         className="h-0.5 w-full bg-gray-100"
         indicatorClassName="bg-black"
       />
+      <div className="flex justify-between mt-1 text-xs text-gray-400">
+        <span>{progressPercentage}%</span>
+        <span>{currentStep}/{TOTAL_STEPS}</span>
+      </div>
     </div>
   );
 };

@@ -2,7 +2,7 @@
 import { useFormContext } from "@/contexts/FormContext";
 import { Button } from "@/components/ui/button";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
-import { useState } from "react";
+import { useState, KeyboardEvent } from "react";
 import { Label } from "@/components/ui/label";
 
 const options = [
@@ -31,8 +31,15 @@ const EmploymentStatusStep = () => {
     setCurrentStep(3);
   };
 
+  const handleKeyDown = (e: KeyboardEvent<HTMLDivElement>) => {
+    if (e.key === "Enter" && formValues.employmentStatus) {
+      e.preventDefault();
+      handleNextStep();
+    }
+  };
+
   return (
-    <div className="animate-fade-in">
+    <div className="animate-fade-in" onKeyDown={handleKeyDown} tabIndex={0}>
       <h2 className="text-2xl font-bold mb-6">Ich bin...</h2>
 
       <div className="space-y-4">
@@ -65,7 +72,7 @@ const EmploymentStatusStep = () => {
             Zurück
           </Button>
           <Button 
-            className="flex-1 bg-form hover:bg-form/90"
+            className="flex-1 form-button"
             onClick={handleNextStep}
           >
             Weiter

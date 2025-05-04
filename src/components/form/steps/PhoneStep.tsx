@@ -2,7 +2,7 @@
 import { useFormContext } from "@/contexts/FormContext";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { useState, useEffect } from "react";
+import { useState, useEffect, KeyboardEvent } from "react";
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { countries, getDefaultCountry } from "@/utils/countryData";
@@ -37,6 +37,13 @@ const PhoneStep = () => {
 
   const handlePrevStep = () => {
     setCurrentStep(2);
+  };
+
+  const handleKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter") {
+      e.preventDefault();
+      handleNextStep();
+    }
   };
 
   return (
@@ -82,6 +89,7 @@ const PhoneStep = () => {
                 updateFormValues({ phoneNumber: e.target.value });
                 setError("");
               }}
+              onKeyDown={handleKeyDown}
               placeholder="Handynummer (ohne Vorwahl)"
               className={`rounded-l-none ${error ? "border-red-500" : ""}`}
             />
@@ -100,7 +108,7 @@ const PhoneStep = () => {
             Zurück
           </Button>
           <Button 
-            className="flex-1 bg-form hover:bg-form/90"
+            className="flex-1 form-button"
             onClick={handleNextStep}
           >
             Weiter

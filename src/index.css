@@ -103,6 +103,10 @@
 
   body {
     @apply bg-background text-foreground font-inter antialiased leading-relaxed;
+    background-image: url('/bg-pattern.svg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
   }
   
   h1, h2, h3, h4, h5, h6 {
@@ -116,7 +120,7 @@
 
 @layer components {
   .form-card {
-    @apply bg-white rounded-none shadow-none overflow-hidden border-t-0;
+    @apply bg-white rounded-none shadow-none overflow-hidden border-t-0 backdrop-blur-sm;
   }
   
   .form-option {
