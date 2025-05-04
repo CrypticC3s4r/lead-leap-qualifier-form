@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useState } from "react";
 import { Label } from "@/components/ui/label";
+import { ArrowLeft, ArrowRight } from "lucide-react";
 
 const EmailStep = () => {
   const { formValues, updateFormValues, setCurrentStep } = useFormContext();
@@ -30,12 +31,12 @@ const EmailStep = () => {
   };
 
   return (
-    <div className="animate-fade-in">
-      <h2 className="text-2xl font-bold mb-2">Deine E-Mail</h2>
+    <div className="animate-slide-in">
+      <h2 className="text-3xl sm:text-4xl font-bold mb-3">Deine E-Mail</h2>
 
-      <div className="space-y-4">
+      <div className="space-y-6">
         <div>
-          <Label htmlFor="email">Email</Label>
+          <Label htmlFor="email" className="text-base mb-1.5 block">E-Mail</Label>
           <Input
             id="email"
             type="email"
@@ -44,27 +45,29 @@ const EmailStep = () => {
               updateFormValues({ email: e.target.value });
               setError("");
             }}
-            placeholder="Email"
-            className={error ? "border-red-500" : ""}
+            placeholder="deine@email.de"
+            className={`h-12 text-base rounded-lg ${error ? "border-red-500 focus-visible:ring-red-500" : "focus-visible:ring-form-primary"}`}
           />
           {error && (
-            <p className="text-red-500 text-xs mt-1">{error}</p>
+            <p className="text-red-500 text-sm mt-1.5">{error}</p>
           )}
         </div>
 
-        <div className="flex space-x-4 mt-6">
+        <div className="flex space-x-4 mt-8">
           <Button 
             variant="outline" 
-            className="flex-1"
+            className="flex-1 h-12 text-base rounded-lg border-gray-300"
             onClick={handlePrevStep}
           >
-            Zurück
+            <ArrowLeft className="mr-2 h-5 w-5" />
+            <span>Zurück</span>
           </Button>
           <Button 
-            className="flex-1 bg-form hover:bg-form/90"
+            className="flex-1 h-12 bg-form-primary hover:bg-form-primary/90 text-white text-base rounded-lg"
             onClick={handleNextStep}
           >
-            Weiter
+            <span>Weiter</span>
+            <ArrowRight className="ml-2 h-5 w-5" />
           </Button>
         </div>
       </div>

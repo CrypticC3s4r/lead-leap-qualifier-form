@@ -7,7 +7,7 @@ const Index = () => {
   return (
     <div className="min-h-screen flex flex-col bg-gray-50">
       <Header />
-      <main className="flex-1 container py-8">
+      <main className="flex-1 container py-12 sm:py-16">
         <LeadQualifierForm />
       </main>
       <Footer />

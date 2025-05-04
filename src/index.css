@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -32,7 +33,7 @@
     --input: 214.3 31.8% 91.4%;
     --ring: 222.2 84% 4.9%;
 
-    --radius: 0.5rem;
+    --radius: 0.75rem;
 
     --sidebar-background: 0 0% 98%;
 
@@ -49,6 +50,13 @@
     --sidebar-border: 220 13% 91%;
 
     --sidebar-ring: 217.2 91.2% 59.8%;
+    
+    /* New form theme colors */
+    --form-primary: 270 100% 67%;
+    --form-background: 0 0% 100%;
+    --form-text: 0 0% 10%;
+    --form-success: 160 100% 75%;
+    --form-accent: 25 100% 94%;
   }
 
   .dark {
@@ -96,6 +104,34 @@
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-inter antialiased leading-relaxed;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-bold tracking-tight;
+  }
+  
+  h2 {
+    @apply text-3xl sm:text-4xl leading-tight;
+  }
+}
+
+@layer components {
+  .form-card {
+    @apply bg-white rounded-xl shadow-md overflow-hidden border-t-4 border-t-form-primary transition-all;
+  }
+  
+  .form-option {
+    @apply flex items-center space-x-3 border p-4 rounded-lg hover:bg-gray-50 transition-colors cursor-pointer;
+  }
+  
+  .form-option.selected {
+    @apply border-form-primary bg-form-primary/5;
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    @apply bg-gradient-to-r from-form-primary to-form-accent bg-clip-text text-transparent;
   }
 }
