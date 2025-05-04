@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useState } from "react";
 import { Label } from "@/components/ui/label";
-import { ArrowLeft, ArrowRight } from "lucide-react";
+import { ArrowLeft } from "lucide-react";
 
 const EmailStep = () => {
   const { formValues, updateFormValues, setCurrentStep } = useFormContext();
@@ -32,9 +32,10 @@ const EmailStep = () => {
 
   return (
     <div className="animate-slide-in">
-      <h2 className="text-3xl sm:text-4xl font-bold mb-3">Deine E-Mail</h2>
+      <div className="form-step-number">2 <span className="form-arrow">→</span></div>
+      <h2 className="font-normal mb-2">Deine E-Mail</h2>
 
-      <div className="space-y-6">
+      <div className="space-y-10 mt-8">
         <div>
           <Label htmlFor="email" className="text-base mb-1.5 block">E-Mail</Label>
           <Input
@@ -46,29 +47,21 @@ const EmailStep = () => {
               setError("");
             }}
             placeholder="deine@email.de"
-            className={`h-12 text-base rounded-lg ${error ? "border-red-500 focus-visible:ring-red-500" : "focus-visible:ring-form-primary"}`}
+            className="form-underlined-input h-12 text-base"
           />
           {error && (
             <p className="text-red-500 text-sm mt-1.5">{error}</p>
           )}
         </div>
 
-        <div className="flex space-x-4 mt-8">
+        <div>
           <Button 
-            variant="outline" 
-            className="flex-1 h-12 text-base rounded-lg border-gray-300"
-            onClick={handlePrevStep}
-          >
-            <ArrowLeft className="mr-2 h-5 w-5" />
-            <span>Zurück</span>
-          </Button>
-          <Button 
-            className="flex-1 h-12 bg-form-primary hover:bg-form-primary/90 text-white text-base rounded-lg"
+            className="form-button px-8 py-3 h-auto rounded-sm"
             onClick={handleNextStep}
           >
-            <span>Weiter</span>
-            <ArrowRight className="ml-2 h-5 w-5" />
+            <span className="mr-2">Ok</span>
           </Button>
+          <div className="text-sm text-gray-500 mt-2">Drücken Sie Enter ↵</div>
         </div>
       </div>
     </div>

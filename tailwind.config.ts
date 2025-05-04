@@ -67,7 +67,7 @@ export default {
 					ring: 'hsl(var(--sidebar-ring))'
 				},
 				form: {
-					primary: '#A259FF',
+					primary: '#000000',
 					accent: '#4CC9F0',
 					success: '#4ADE80',
 					peach: '#FDE1D3',
@@ -76,8 +76,6 @@ export default {
 				'form-primary': 'hsl(var(--form-primary))',
 				'form-background': 'hsl(var(--form-background))',
 				'form-text': 'hsl(var(--form-text))',
-				'form-success': 'hsl(var(--form-success))',
-				'form-accent': 'hsl(var(--form-accent))',
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
@@ -140,7 +138,7 @@ export default {
 				'slide-out': 'slide-out 0.4s ease-out'
 			},
 			backgroundImage: {
-				'gradient-form': 'linear-gradient(135deg, #A259FF 0%, #7B2CBF 100%)'
+				'gradient-form': 'linear-gradient(135deg, #000000 0%, #333333 100%)'
 			}
 		}
 	},

@@ -39,10 +39,11 @@ const NameStep = () => {
 
   return (
     <div className="animate-slide-in">
-      <h2 className="text-3xl sm:text-4xl font-bold mb-3">Dein Name</h2>
-      <p className="text-gray-600 mb-8 text-lg">Trage hier Vor- sowie Nachname ein</p>
+      <div className="form-step-number">1 <span className="form-arrow">→</span></div>
+      <h2 className="font-normal mb-2">Dein Name</h2>
+      <p className="text-gray-600 mb-8">Trage hier Vor- sowie Nachname ein</p>
 
-      <div className="space-y-6">
+      <div className="space-y-10">
         <div>
           <Label htmlFor="firstName" className="text-base mb-1.5 block">Vorname</Label>
           <Input
@@ -54,7 +55,7 @@ const NameStep = () => {
               if (errors.firstName) setErrors({...errors, firstName: ""});
             }}
             placeholder="Vorname"
-            className={`h-12 text-base rounded-lg ${errors.firstName ? "border-red-500 focus-visible:ring-red-500" : "focus-visible:ring-form-primary"}`}
+            className="form-underlined-input h-12 text-base"
           />
           {errors.firstName && (
             <p className="text-red-500 text-sm mt-1.5">{errors.firstName}</p>
@@ -72,20 +73,22 @@ const NameStep = () => {
               if (errors.lastName) setErrors({...errors, lastName: ""});
             }}
             placeholder="Nachname"
-            className={`h-12 text-base rounded-lg ${errors.lastName ? "border-red-500 focus-visible:ring-red-500" : "focus-visible:ring-form-primary"}`}
+            className="form-underlined-input h-12 text-base"
           />
           {errors.lastName && (
             <p className="text-red-500 text-sm mt-1.5">{errors.lastName}</p>
           )}
         </div>
 
-        <Button 
-          className="w-full h-12 mt-8 bg-form-primary hover:bg-form-primary/90 text-white text-base rounded-lg transition-all"
-          onClick={handleNextStep}
-        >
-          <span>Weiter</span>
-          <ArrowRight className="ml-2 h-5 w-5" />
-        </Button>
+        <div>
+          <Button 
+            className="form-button px-8 py-3 h-auto rounded-sm"
+            onClick={handleNextStep}
+          >
+            <span className="mr-2">Ok</span>
+          </Button>
+          <div className="text-sm text-gray-500 mt-2">Drücken Sie Enter ↵</div>
+        </div>
       </div>
     </div>
   );
