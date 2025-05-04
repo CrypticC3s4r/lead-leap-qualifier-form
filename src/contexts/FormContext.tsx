@@ -1,6 +1,7 @@
 
 import React, { createContext, useState, useContext, ReactNode } from 'react';
 import { FormValues } from '@/types/form';
+import { getDefaultCountry } from '@/utils/countryData';
 
 interface FormContextType {
   formValues: FormValues;
@@ -17,6 +18,7 @@ const defaultFormValues: FormValues = {
   lastName: '',
   email: '',
   phoneNumber: '',
+  countryCode: getDefaultCountry().dialCode,
   employmentStatus: '',
   employmentType: '',
   income: '',

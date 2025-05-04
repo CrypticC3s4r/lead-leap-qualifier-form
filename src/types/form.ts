@@ -10,6 +10,7 @@ export type FormValues = {
   lastName: string;
   email: string;
   phoneNumber: string;
+  countryCode: string;
   employmentStatus: string;
   employmentType: string;
   income: string;
